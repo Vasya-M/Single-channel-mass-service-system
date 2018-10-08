@@ -15,10 +15,17 @@ namespace Model_sys_2
         public Form1()
         {
             InitializeComponent();
-            init();
+          
         }
         void init()
         {
+            t1_after_last.Clear();
+            t2_service.Clear();
+            t3_arriving_new.Clear();
+            t4_start_service.Clear();
+            t5_end_service.Clear();
+            t6_waiting.Clear();
+            t7_downtime.Clear();
         for (int i = 0;i< users;i++)
             {
                 t1_after_last.Add(0);
@@ -32,7 +39,7 @@ namespace Model_sys_2
         }
         double seed = 0; int position = 0;
         int users = 1;
-        mpoint receipt, wait;
+        mpoint receipt = new mpoint(), wait = new mpoint();
 
       
         List<int> t1_after_last = new List<int>();
@@ -46,19 +53,38 @@ namespace Model_sys_2
         List<int> t7_downtime = new List<int>();
         private void start_Click(object sender, EventArgs e)
         {
+            
             parse();
+            autosize();
+            init();
+            dataGridView1.Rows.Clear();
             Random rand = new Random((int)seed);
             int coutn = users;
-            for(int i = 0; i < users;i++)
+            for(int i = 0; i < users;i++, position++)
             {
                 set_all(rand);
-                position++;
+                
+                // Convert.ToString()
+                dataGridView1.Rows.Add(position+1, t1_after_last[position], t2_service[position],t3_arriving_new[position],
+                   t4_start_service[position],t5_end_service[position],t6_waiting[position],t7_downtime[position] );
             }
         }
         void set_all(Random r)
         {
-            t1_after_last[position] = r.Next(receipt.min, receipt.max);
             t2_service[position] = r.Next(wait.min, wait.min);
+            if (position == 0)
+            {
+                t1_after_last[0] = 0;
+                t3_arriving_new[0] = 0;
+                t4_start_service[0] = 0;
+                t5_end_service[0] = to_doble_minutes(t2_service[0]);
+                t6_waiting[0] = t2_service[0];
+                t7_downtime[0] = 0;
+                return;
+            } 
+            else
+                t1_after_last[position] = r.Next(receipt.min, receipt.max);
+           
             set_t3();
             set_t4();
             set_t5();
@@ -70,7 +96,7 @@ namespace Model_sys_2
             if (position == 0)
                 t3_arriving_new[position] = 0.00;
             else
-            t3_arriving_new[position] = add_minutes(t3_arriving_new[position - 1], t1_after_last[position]);
+            t3_arriving_new[position] = add_minutes(t3_arriving_new[position - 1], to_doble_minutes( t1_after_last[position]));
         }
         void set_t4()
         {
@@ -110,7 +136,41 @@ namespace Model_sys_2
                 seed = Convert.ToDouble(randbox.Text);
             else
                 seed = 0;
+            if (isNumerical = int.TryParse(tUSERS.Text, out myInt)) //
+                users = Convert.ToInt32(tUSERS.Text);
+            else
+                users = 20;
 
+            if (isNumerical = int.TryParse(tRECEIPT_max.Text, out myInt)) //
+                receipt.max = Convert.ToInt32(tRECEIPT_max.Text);
+            else
+                receipt.max = 29;
+
+            if (isNumerical = int.TryParse(tRECEIPT_min.Text, out myInt)) //
+                receipt.min = Convert.ToInt32(tRECEIPT_min.Text);
+            else
+                receipt.min = 1;
+
+            if (isNumerical = int.TryParse(tWAIT_max.Text, out myInt)) //
+                wait.max = Convert.ToInt32(tWAIT_max.Text);
+            else
+                wait.max = 1;
+            if (isNumerical = int.TryParse(tWAIT_min.Text, out myInt)) //
+                wait.min = Convert.ToInt32(tWAIT_min.Text);
+            else
+                wait.min = 1;
+
+        }
+        void autosize()
+        {
+            int k = users;
+            if (users > 20)
+                k = 20;
+
+            this.Height = 161 + k * 22;
+            dataGridView1.Height = 40 + k * 22;
+           
+            
         }
         double to_doble_minutes(int minutes) // from int to double
         {
@@ -139,11 +199,26 @@ namespace Model_sys_2
             return ret;
         }
 
-       public class mpoint {
+        private void randbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public class mpoint {
             
           public  int min;
           public  int max;
-              mpoint(int mn=1,int mx=2)
+            public mpoint(int mn=1,int mx=2)
             {
                 if (mn < 1)
                     min = 1;
@@ -154,6 +229,7 @@ namespace Model_sys_2
                 else
                      max = mx;
             }
+            
         };
 
     }
