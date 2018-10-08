@@ -132,7 +132,7 @@ namespace Model_sys_2
         }
         int to_int_minutes(double dminutes) // from double to count of minutes
         {
-            dminutes += 0.0000001;
+            dminutes += 0.0000001; // becuz need
             int hours = (int)dminutes;
             int minutes = (int) ((dminutes - Math.Truncate(dminutes )) * 100);
             int ret = hours*60 + minutes ;
