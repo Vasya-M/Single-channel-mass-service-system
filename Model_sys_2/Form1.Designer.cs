@@ -49,12 +49,24 @@
             this.tt5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tt6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tt7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.out1 = new System.Windows.Forms.Label();
+            this.out2 = new System.Windows.Forms.Label();
+            this.out3 = new System.Windows.Forms.Label();
+            this.out4 = new System.Windows.Forms.Label();
+            this.out5 = new System.Windows.Forms.Label();
+            this.out6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(417, 36);
+            this.start.Location = new System.Drawing.Point(383, 7);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(75, 23);
             this.start.TabIndex = 0;
@@ -235,11 +247,138 @@
             this.tt7.ReadOnly = true;
             this.tt7.Width = 40;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(380, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(281, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Середній час перебування біля прилавку";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(380, 69);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(283, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Процент непродуктивного часу продавця";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(380, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(251, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Інтенсивність вхідного потоку заявок";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(380, 124);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(286, 17);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Час очікування заявки на обслуговування";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(380, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(236, 17);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Час перебування заявки в системі";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(380, 186);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(286, 17);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Коефіцієнт завантаження каналу системи";
+            // 
+            // out1
+            // 
+            this.out1.AutoSize = true;
+            this.out1.Location = new System.Drawing.Point(678, 41);
+            this.out1.Name = "out1";
+            this.out1.Size = new System.Drawing.Size(13, 13);
+            this.out1.TabIndex = 18;
+            this.out1.Text = " .";
+            // 
+            // out2
+            // 
+            this.out2.AutoSize = true;
+            this.out2.Location = new System.Drawing.Point(681, 73);
+            this.out2.Name = "out2";
+            this.out2.Size = new System.Drawing.Size(10, 13);
+            this.out2.TabIndex = 19;
+            this.out2.Text = ".";
+            // 
+            // out3
+            // 
+            this.out3.AutoSize = true;
+            this.out3.Location = new System.Drawing.Point(681, 99);
+            this.out3.Name = "out3";
+            this.out3.Size = new System.Drawing.Size(10, 13);
+            this.out3.TabIndex = 20;
+            this.out3.Text = ".";
+            // 
+            // out4
+            // 
+            this.out4.AutoSize = true;
+            this.out4.Location = new System.Drawing.Point(681, 128);
+            this.out4.Name = "out4";
+            this.out4.Size = new System.Drawing.Size(10, 13);
+            this.out4.TabIndex = 21;
+            this.out4.Text = ".";
+            // 
+            // out5
+            // 
+            this.out5.AutoSize = true;
+            this.out5.Location = new System.Drawing.Point(681, 158);
+            this.out5.Name = "out5";
+            this.out5.Size = new System.Drawing.Size(10, 13);
+            this.out5.TabIndex = 22;
+            this.out5.Text = ".";
+            // 
+            // out6
+            // 
+            this.out6.AutoSize = true;
+            this.out6.Location = new System.Drawing.Point(681, 186);
+            this.out6.Name = "out6";
+            this.out6.Size = new System.Drawing.Size(10, 13);
+            this.out6.TabIndex = 23;
+            this.out6.Text = ".";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 357);
+            this.ClientSize = new System.Drawing.Size(741, 357);
+            this.Controls.Add(this.out6);
+            this.Controls.Add(this.out5);
+            this.Controls.Add(this.out4);
+            this.Controls.Add(this.out3);
+            this.Controls.Add(this.out2);
+            this.Controls.Add(this.out1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -283,6 +422,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tt5;
         private System.Windows.Forms.DataGridViewTextBoxColumn tt6;
         private System.Windows.Forms.DataGridViewTextBoxColumn tt7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label out1;
+        private System.Windows.Forms.Label out2;
+        private System.Windows.Forms.Label out3;
+        private System.Windows.Forms.Label out4;
+        private System.Windows.Forms.Label out5;
+        private System.Windows.Forms.Label out6;
     }
 }
 

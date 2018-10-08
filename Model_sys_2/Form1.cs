@@ -19,6 +19,7 @@ namespace Model_sys_2
         }
         void init()
         {
+            t6_counted = 0;t7_counted = 0; d_t4_t3 = 0; t2_counted = 0; t1_counted = 0;
             t1_after_last.Clear();
             t2_service.Clear();
             t3_arriving_new.Clear();
@@ -51,27 +52,32 @@ namespace Model_sys_2
 
         List<int> t6_waiting = new List<int>();
         List<int> t7_downtime = new List<int>();
+        int t6_counted = 0, t7_counted = 0, d_t4_t3 = 0, t2_counted = 0, t1_counted = 0;
         private void start_Click(object sender, EventArgs e)
         {
-            
             parse();
             autosize();
             init();
             dataGridView1.Rows.Clear();
-            Random rand = new Random((int)seed);
+            Random rand;
+            if (seed==0)
+                rand = new Random();
+            else
+             rand = new Random((int)seed);
             int coutn = users;
             for(int i = 0; i < users;i++, position++)
             {
                 set_all(rand);
-                
-                // Convert.ToString()
-                dataGridView1.Rows.Add(position+1, t1_after_last[position], t2_service[position],t3_arriving_new[position],
-                   t4_start_service[position],t5_end_service[position],t6_waiting[position],t7_downtime[position] );
+                calculation();
+                 dataGridView1.Rows.Add(position+1, t1_after_last[position], t2_service[position],t3_arriving_new[position],
+                      t4_start_service[position],t5_end_service[position],t6_waiting[position],t7_downtime[position] );
             }
+            outputs();
+
         }
         void set_all(Random r)
         {
-            t2_service[position] = r.Next(wait.min, wait.min);
+            t2_service[position] = r.Next(wait.min, wait.max);
             if (position == 0)
             {
                 t1_after_last[0] = 0;
@@ -112,11 +118,11 @@ namespace Model_sys_2
         }
         void set_t5()
         {
-            t5_end_service[position] = t4_start_service[position] + to_doble_minutes(t2_service[position]); 
+            t5_end_service[position] = add_minutes( t4_start_service[position] , to_doble_minutes(t2_service[position]) ); 
         }
         void set_t6()
         {
-            t6_waiting[position] = to_int_minutes(t4_start_service[position] -   t3_arriving_new[position]); 
+            t6_waiting[position] = to_int_minutes( subtrackt_doubles(t5_end_service[position], t3_arriving_new[position]) ) ; 
         }
         void set_t7()
         {
@@ -126,6 +132,24 @@ namespace Model_sys_2
             }
             else
                 t7_downtime[position] = to_int_minutes(t3_arriving_new[position] - t5_end_service[position - 1]);
+        }
+        void calculation()
+        {
+            t7_counted += t7_downtime[position]; // Percentage of seller's downtime
+            t6_counted += t6_waiting[position];  // avarage time in system
+            d_t4_t3 += to_int_minutes(t4_start_service[position]) - to_int_minutes(t3_arriving_new[position]); // avarage time of waiting
+            t2_counted += t2_service[position];// avarage time of execution
+            t1_counted += t1_after_last[position]; // // avarage time of execution
+
+        }
+        void outputs()
+        {
+            out1.Text = Convert.ToString(Math.Round((double)t6_counted/users , 3));
+            out2.Text = Convert.ToString(Math.Round((double)t7_counted*100 /to_int_minutes(t5_end_service[users-1]), 3))+" %";
+            out4.Text = Convert.ToString(  Math.Round(d_t4_t3 / (double)users ) );
+            out5.Text = Convert.ToString(Math.Round((double)t2_counted / users, 3)); //
+            out3.Text = Convert.ToString(Math.Round((double)t1_counted / users, 3));
+            out6.Text = Convert.ToString(Math.Round(  ((double)t2_counted / users)/((double)t1_counted / users),3)  );
         }
         void parse()
         {
@@ -190,6 +214,11 @@ namespace Model_sys_2
                 res = toit + addit;
             return res;
         }
+        double subtrackt_doubles(double toit, double addit)
+        {
+            int ret = to_int_minutes(toit) - to_int_minutes(addit);
+            return  to_doble_minutes(ret);
+        }
         int to_int_minutes(double dminutes) // from double to count of minutes
         {
             dminutes += 0.0000001; // becuz need
@@ -205,6 +234,11 @@ namespace Model_sys_2
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
