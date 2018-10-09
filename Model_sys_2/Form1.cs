@@ -15,7 +15,7 @@ namespace Model_sys_2
         public Form1()
         {
             InitializeComponent();
-          
+            visible(false);
         }
         void init()
         {
@@ -58,6 +58,7 @@ namespace Model_sys_2
             parse();
             autosize();
             init();
+            visible(true);
             dataGridView1.Rows.Clear();
             Random rand;
             if (seed==0)
@@ -73,7 +74,6 @@ namespace Model_sys_2
                       t4_start_service[position],t5_end_service[position],t6_waiting[position],t7_downtime[position] );
             }
             outputs();
-
         }
         void set_all(Random r)
         {
@@ -190,11 +190,11 @@ namespace Model_sys_2
             int k = users;
             if (users > 20)
                 k = 20;
-
             this.Height = 161 + k * 22;
-            dataGridView1.Height = 40 + k * 22;
-           
-            
+            this.Width = 757;
+            if (this.Height < 255)
+                this.Height = 255;
+            dataGridView1.Height = 40 + k * 22;  
         }
         double to_doble_minutes(int minutes) // from int to double
         {
@@ -226,6 +226,11 @@ namespace Model_sys_2
             int minutes = (int) ((dminutes - Math.Truncate(dminutes )) * 100);
             int ret = hours*60 + minutes ;
             return ret;
+        }
+        void visible (bool visibl)
+        {
+            label5.Visible = visibl;label6.Visible = visibl;label7.Visible = visibl;label8.Visible = visibl;label9.Visible = visibl;label10.Visible = visibl;
+            out1.Visible = visibl;out2.Visible = visibl;out3.Visible = visibl;out4.Visible = visibl;out5.Visible = visibl;out6.Visible = visibl;
         }
 
         private void randbox_TextChanged(object sender, EventArgs e)
