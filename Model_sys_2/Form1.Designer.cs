@@ -61,6 +61,7 @@
             this.out4 = new System.Windows.Forms.Label();
             this.out5 = new System.Windows.Forms.Label();
             this.out6 = new System.Windows.Forms.Label();
+            this.info = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,11 +170,13 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.User,
             this.tt1,
@@ -362,11 +365,21 @@
             this.out6.TabIndex = 23;
             this.out6.Text = ".";
             // 
+            // info
+            // 
+            this.info.AutoSize = true;
+            this.info.Location = new System.Drawing.Point(380, 218);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(0, 13);
+            this.info.TabIndex = 24;
+            this.info.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 216);
+            this.ClientSize = new System.Drawing.Size(710, 307);
+            this.Controls.Add(this.info);
             this.Controls.Add(this.out6);
             this.Controls.Add(this.out5);
             this.Controls.Add(this.out4);
@@ -434,6 +447,7 @@
         private System.Windows.Forms.Label out4;
         private System.Windows.Forms.Label out5;
         private System.Windows.Forms.Label out6;
+        private System.Windows.Forms.Label info;
     }
 }
 
